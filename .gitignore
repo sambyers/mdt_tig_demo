@@ -1,0 +1,6 @@
+.pyc
+.virlrc
+__pycache__
+.virl
+# Hide CML inventory with CML server details
+*inventory.yaml

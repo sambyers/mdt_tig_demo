@@ -1,0 +1,24 @@
+---
+- name: Enable NETCONF and set lab address
+  hosts: routers
+  gather_facts: False
+
+  vars:
+      ansible_connection: network_cli
+      ansible_become: yes
+      ansible_become_method: enable
+      ansible_become_password: cisco
+      ansible_host_key_checking: False
+
+  tasks:
+  
+    - name: Enable netconf-yang on device
+      ios_config:
+        lines:
+        - netconf-yang
+    
+    # Add aaa authorization for netconf to work
+    - name: Add AAA authorization
+      ios_config:
+        lines:
+        - aaa authorization exec default local
